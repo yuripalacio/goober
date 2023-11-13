@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  PASSENGER
+  DRIVER
+  MANAGEMENT
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique
+  role      UserRole @default(PASSENGER)
+  createdAt DateTime @default(now()) @map("created_at")
+  Passenger Trip[]   @relation("passengerTrip")
+
+  @@map("users")
+}
+
+enum TripStatus {
+  AWAITING
+  IN_PROGRESS
+  COMPLETED
+  CANCELED
+}
+
+model Trip {
+  id          String     @id @default(uuid())
+  status      TripStatus @default(AWAITING)
+  passengerId String     @map("passenger_id")
+  driverId    String?    @map("driver_id")
+  startPoint  String     @map("start_point")
+  destination String
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime?  @updatedAt @map("updated_at")
+
+  passenger User @relation("passengerTrip", fields: [passengerId], references: [id])
+
+  @@map("trips")
+}
