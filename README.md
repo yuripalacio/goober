@@ -1,4 +1,5 @@
 # goober
+I invested approximately 6 hours in the development of this project. It was quite challenging and enjoyable.
 
 ## goober-api
 1. Make sure you have Node.js version 21.0.0 or higher installed. If you don't, install the nvm package manager and then install Node.js version 21.0.0.
