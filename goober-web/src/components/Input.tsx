@@ -1,5 +1,5 @@
-import { ComponentProps, InputHTMLAttributes } from 'react'
-import { UseFormRegister } from 'react-hook-form'
+import { ComponentProps, InputHTMLAttributes, useEffect, useState } from 'react'
+import { UseFormRegister, UseFormRegisterReturn } from 'react-hook-form'
 
 type InputPrefixProps = ComponentProps<'div'>
 
@@ -12,10 +12,18 @@ interface InputControlProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export function Control({ register, name, ...props }: InputControlProps) {
+  const [inputRegister, setInputRegister] = useState<UseFormRegisterReturn<string> | null>(null)
+
+  useEffect(() => {
+    if (register && name) {
+      setInputRegister(register(name))
+    }
+  }, [register, name])
+
   return (
     <input
       className="flex-1 border-0 border-none bg-transparent p-0 text-indigo-900 placeholder-indigo-600 outline-none"
-      {...(register && name ? register(name) : {})}
+      {...inputRegister}
       {...props}
     />
   )

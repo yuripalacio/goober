@@ -45,9 +45,7 @@ export default function RiderConfirm() {
           setDriverLocation(driverLocation)
 
           const url =
-            `https://api.mapbox.com/directions/v5/mapbox/driving/${
-              trip.startPoint
-            };${driverLocation.toString()}?` +
+            `https://api.mapbox.com/directions/v5/mapbox/driving/${driverLocation.toString()};${trip.startPoint}?` +
             'geometries=geojson&' +
             new URLSearchParams({
               access_token:

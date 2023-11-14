@@ -28,6 +28,7 @@ export default function RiderConfirm() {
   >(null)
   const [rideDuration, setRideDuration] = useState(0)
   const [ridePrice, setRidePrice] = useState(0)
+  const [onTrip, setOnTrip] = useState(false)
 
   const dropoff = riderParams.get('dropoff')
 
@@ -128,6 +129,7 @@ export default function RiderConfirm() {
         driverId: 'Yuri Fortunato Palacio',
       }),
     })
+    setOnTrip(true)
   }, [tripId])
 
   useEffect(() => {
@@ -216,18 +218,29 @@ export default function RiderConfirm() {
                   })}
                 </span>
               </div>
-              <div className="grid w-full grid-cols-2 gap-2">
-                <Button
-                  className="py-4"
-                  variant="outline"
-                  onClick={handleDecline}
-                >
-                  Decline
-                </Button>
-                <Button onClick={handleAccept} className="w-full py-4">
-                  Accept
-                </Button>
-              </div>
+              {!onTrip
+              ? <div className="grid w-full grid-cols-2 gap-2">
+                  <Button
+                    className="py-4"
+                    variant="outline"
+                    onClick={handleDecline}
+                  >
+                    Decline
+                  </Button>
+                  <Button onClick={handleAccept} className="w-full py-4">
+                    Accept
+                  </Button>
+                </div>
+              : <div className="grid w-full grid-cols-1 gap-2">
+                  <Button
+                    className="py-4"
+                    variant="outline"
+                    // onClick={handleDecline}
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              }
             </>
           ) : (
             <span className="text-lg text-indigo-400">

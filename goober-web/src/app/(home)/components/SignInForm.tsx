@@ -1,6 +1,6 @@
 'use client'
 
-import { LockKeyhole, User } from 'lucide-react'
+import { User } from 'lucide-react'
 import * as Input from '@/components/Input'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
@@ -8,11 +8,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Button } from '@/components/Button'
 import { api } from '@/data/api'
-import { setCookie } from 'nookies'
 
 const signInFormSchema = z.object({
   username: z.string().min(1, { message: 'Name obligatory' }),
-  password: z.string().min(1, { message: 'Password obligatory' }),
 })
 
 type SignInFormSchema = z.infer<typeof signInFormSchema>
@@ -55,18 +53,6 @@ export function SignInForm() {
         <Input.Control
           name="username"
           className="bg-transparent text-lg"
-          defaultValue="Yuri Palacio"
-          register={register}
-        />
-      </Input.Root>
-      <Input.Root>
-        <Input.Prefix>
-          <LockKeyhole className="h-5 w-5 text-indigo-500" />
-        </Input.Prefix>
-        <Input.Control
-          name="password"
-          className="bg-transparent text-lg "
-          type="password"
           defaultValue="Yuri Palacio"
           register={register}
         />
