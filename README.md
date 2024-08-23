@@ -1,5 +1,28 @@
 # goober
-I invested approximately 6 hours in the development of this project. It was quite challenging and enjoyable.
+The idea here is to "replicate" some features we can find on Uber.
+Exists in a back-end (goober-api) and front-end (goober-web) application.
+
+I would like to share with it what I could do in a short time.
+In this case, I spent around 4 days working on it, but not full-time.
+Probably something around 18 hours.
+
+## Technologies
+For this application, I used the following technologies:
+- NextJS
+- NestJS
+- Docker
+- Postgres
+
+Relevant Libraries - Backend:
+- Prisma
+- Vitest
+- Zod
+
+Relevant Libraries - Frontend:
+- React Hook Form
+- Lucide React
+- React Data Table Component
+- Mapbox GL
 
 ## goober-api
 1. Make sure you have Node.js version 21.0.0 or higher installed. If you don't, install the nvm package manager and then install Node.js version 21.0.0.
@@ -112,23 +135,5 @@ The following are the areas that need improvement/development:
 - Update the management map with the positions of passengers and drivers.
 - Create a dashboard with revenue information for the last 30, 60, and 90 days.
 - Allow administrators to cancel a trip.
-
-### Technologies
-For this application, I used the following technologies:
-- NextJS
-- NestJS
-- Docker
-- Postgres
-
-Relevant Libraries - Backend:
-- Prisma
-- Vitest
-- Zod
-
-Relevant Libraries - Frontend:
-- React Hook Form
-- Lucide React
-- React Data Table Component
-- Mapbox GL
 
 By [Yuri Palacio](https://www.linkedin.com/in/yuri-palacio/) :wave:
